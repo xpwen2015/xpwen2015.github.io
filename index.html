@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>恋尘的博客</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f6f8;color:#252936;font-family:Arial,"Microsoft YaHei",sans-serif}
+header{background:white;padding:20px 6%;border-bottom:1px solid #eee}
+.logo{font-size:25px;font-weight:bold;color:#333}
+nav{margin-top:15px;display:flex;gap:20px;flex-wrap:wrap}
+nav a{color:#555;text-decoration:none}
+.hero{padding:55px 6%;background:linear-gradient(135deg,#e9efff,#f8f9fc)}
+.hero h1{font-size:32px;margin:0 0 15px}
+.hero p{color:#666;line-height:1.8}
+.container{max-width:1100px;margin:auto;padding:25px 5%}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:white;border-radius:12px;padding:20px;box-shadow:0 3px 15px #00000008}
+.card h3{margin-top:5px}
+.tag{color:#6879bd;font-size:13px}
+.price{color:#e66;font-size:21px;font-weight:bold}
+button{border:0;background:#526bd8;color:white;padding:10px 16px;border-radius:8px;cursor:pointer}
+button:disabled{background:#aaa}
+section{margin-bottom:35px}
+footer{text-align:center;padding:30px;color:#888}
+#chat{position:fixed;right:18px;bottom:18px}
+#chatbox{display:none;position:fixed;right:18px;bottom:75px;background:white;width:280px;padding:18px;border-radius:12px;box-shadow:0 4px 25px #0002}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">恋尘的博客</div>
+<nav>
+<a href=" ">首页</a >
+<a href="#blog">博客文章</a >
+<a href="#resources">资源分类</a >
+<a href="#shop">资料商城</a >
+<a href="#contact">联系客服</a >
+</nav>
+</header>
+
+<div class="hero">
+<h1>欢迎来到恋尘的博客</h1>
+<p>分享视频资料、实用教程、软件资源，发现有价值的数字内容。</p >
+</div>
+
+<div class="container">
+<section id="resources">
+<h2>资源分类</h2>
+<div class="categories">
+<div class="card"><h3>🎬 视频资料</h3><p>精选视频与学习素材</p ></div>
+<div class="card"><h3>📚 教程资料</h3><p>实用教程与学习文档</p ></div>
+<div class="card"><h3>💻 软件资源</h3><p>工具软件与资源合集</p ></div>
+</div>
+</section>
+
+<section id="blog">
+<h2>博客文章</h2>
+<div class="card">
+<h3>欢迎来到我的个人博客</h3>
+<p>这里将持续更新资源介绍、使用教程和分享文章。</p >
+</div>
+</section>
+
+<section id="shop">
+<h2>资料商城</h2>
+<p>单份数字资料，售出后自动下架（当前为演示页面）</p >
+<div class="products">
+<div class="card">
+<span class="tag">教程资料</span>
+<h3>示例教程资料 A</h3>
+<p>资料介绍：详细内容及说明将在正式上架时更新。</p >
+<div class="price">¥9.90</div>
+<button onclick="buy(this)">模拟购买</button>
+</div>
+<div class="card">
+<span class="tag">视频资料</span>
+<h3>示例视频资料 B</h3>
+<p>资料介绍：单份库存，售出后下架。</p >
+<div class="price">¥19.90</div>
+<button onclick="buy(this)">模拟购买</button>
+</div>
+<div class="card">
+<span class="tag">软件资源</span>
+<h3>示例软件资源 C</h3>
+<p>资料介绍：具体资源介绍稍后添加。</p >
+<div class="price">¥5.00</div>
+<button onclick="buy(this)">模拟购买</button>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>联系客服</h2>
+<div class="card">
+<p>如有问题，可点击右下角客服按钮咨询。</p >
+<p>正式客服联系方式后续设置。</p >
+</div>
+</section>
+</div>
+
+<footer>© 2026 恋尘的博客 · 个人资源分享</footer>
+
+<button id="chat" onclick="toggleChat()">在线客服</button>
+<div id="chatbox">
+<h3>在线客服</h3>
+<p>你好！客服功能目前为演示版本。</p >
+<textarea id="msg" placeholder="请输入咨询内容" style="width:100%;height:70px"></textarea>
+<br><br>
+<button onclick="sendMsg()">发送</button>
+<button onclick="toggleChat()" style="background:#888">关闭</button>
+<div id="reply"></div>
+</div>
+
+<script>
+function buy(btn){
+if(btn.disabled)return;
+if(confirm("这是演示购买，尚未接入真实支付。确定模拟购买吗？")){
+btn.innerText="已售出";
+btn.disabled=true;
+}
+}
+function toggleChat(){
+let box=document.getElementById("chatbox");
+box.style.display=box.style.display==="block"?"none":"block";
+}
+function sendMsg(){
+let m=document.getElementById("msg").value.trim();
+if(!m)return;
+document.getElementById("reply").innerText="留言已记录在本页面演示中，正式客服功能尚未接入。";
+document.getElementById("msg").value="";
+}
+</script>
+</body>
+</html>
