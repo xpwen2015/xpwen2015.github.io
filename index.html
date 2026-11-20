@@ -3,134 +3,883 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>恋尘的博客</title>
+<title>恋尘的博客 - 分享与发现</title>
+<meta name="description" content="恋尘的个人博客，分享教程、视频资料、软件资源和数字内容。">
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f5f6f8;color:#252936;font-family:Arial,"Microsoft YaHei",sans-serif}
-header{background:white;padding:20px 6%;border-bottom:1px solid #eee}
-.logo{font-size:25px;font-weight:bold;color:#333}
-nav{margin-top:15px;display:flex;gap:20px;flex-wrap:wrap}
-nav a{color:#555;text-decoration:none}
-.hero{padding:55px 6%;background:linear-gradient(135deg,#e9efff,#f8f9fc)}
-.hero h1{font-size:32px;margin:0 0 15px}
-.hero p{color:#666;line-height:1.8}
-.container{max-width:1100px;margin:auto;padding:25px 5%}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:white;border-radius:12px;padding:20px;box-shadow:0 3px 15px #00000008}
-.card h3{margin-top:5px}
-.tag{color:#6879bd;font-size:13px}
-.price{color:#e66;font-size:21px;font-weight:bold}
-button{border:0;background:#526bd8;color:white;padding:10px 16px;border-radius:8px;cursor:pointer}
-button:disabled{background:#aaa}
-section{margin-bottom:35px}
-footer{text-align:center;padding:30px;color:#888}
-#chat{position:fixed;right:18px;bottom:18px}
-#chatbox{display:none;position:fixed;right:18px;bottom:75px;background:white;width:280px;padding:18px;border-radius:12px;box-shadow:0 4px 25px #0002}
+:root {
+  --main: #596de2;
+  --main-dark: #4558c5;
+  --bg: #f5f7fb;
+  --text: #252b3b;
+  --muted: #7b8294;
+  --white: #fff;
+  --border: #e9ecf3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-inner {
+  max-width: 1150px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--main);
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 14px;
+  color: #62697b;
+}
+
+nav a:hover {
+  color: var(--main);
+}
+
+.hero {
+  padding: 65px 20px;
+  background:
+    radial-gradient(circle at 80% 20%, #dce3ff, transparent 35%),
+    linear-gradient(135deg, #eef1ff, #ffffff);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero-label {
+  display: inline-block;
+  background: #ffffffb8;
+  color: var(--main);
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+
+.hero p {
+  color: #697187;
+  max-width: 600px;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-btn, .secondary-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.primary-btn {
+  color: white;
+  background: var(--main);
+}
+
+.primary-btn:hover {
+  background: var(--main-dark);
+}
+
+.secondary-btn {
+  color: var(--main);
+  background: white;
+  border: 1px solid #e0e5ff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+.section {
+  margin-bottom: 45px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+.search-box {
+  display: flex;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 450px;
+  width: 100%;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  border: none;
+  outline: none;
+}
+
+.search-box button {
+  background: var(--main);
+  color: white;
+  border: none;
+  padding: 0 18px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.category-card {
+  background: white;
+  padding: 23px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  transition: transform .2s;
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+}
+
+.category-icon {
+  font-size: 32px;
+}
+
+.category-card h3 {
+  margin: 12px 0 8px;
+}
+
+.category-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.blog-grid, .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 22px;
+}
+
+.blog-card {
+  transition: transform .2s;
+}
+
+.blog-card:hover {
+  transform: translateY(-3px);
+}
+
+.blog-icon {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e9edff, #f5f6ff);
+  border-radius: 11px;
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  color: var(--main);
+  font-size: 12px;
+  background: #eff1ff;
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+
+.card h3 {
+  margin: 12px 0;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.product-card {
+  position: relative;
+}
+
+.product-card .tag {
+  margin-bottom: 6px;
+}
+
+.price {
+  color: #ef6464;
+  font-weight: bold;
+  font-size: 23px;
+  margin: 15px 0;
+}
+
+.buy-btn {
+  width: 100%;
+  border: none;
+  background: var(--main);
+  color: white;
+  border-radius: 9px;
+  padding: 11px;
+}
+
+.buy-btn:hover {
+  background: var(--main-dark);
+}
+
+.buy-btn:disabled {
+  background: #b8bdca;
+  cursor: not-allowed;
+}
+
+.sold-label {
+  display: inline-block;
+  background: #f0f1f4;
+  color: #777;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.filter-btn {
+  background: white;
+  color: #62697b;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 15px;
+}
+
+.filter-btn.active {
+  background: var(--main);
+  color: white;
+  border-color: var(--main);
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 35px;
+  background: white;
+  border-radius: 12px;
+}
+
+.about-box {
+  background: linear-gradient(135deg, #eef1ff, #fff);
+  border: 1px solid #e6eaff;
+  border-radius: 16px;
+  padding: 25px;
+  line-height: 1.9;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 20px;
+  color: #9298a8;
+  font-size: 13px;
+  background: white;
+  border-top: 1px solid var(--border);
+}
+
+/* 客服 */
+#chat-button {
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 50;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 20px;
+  box-shadow: 0 5px 20px #526bd833;
+}
+
+#chat-box {
+  display: none;
+  position: fixed;
+  right: 18px;
+  bottom: 80px;
+  width: 300px;
+  max-width: calc(100vw - 36px);
+  background: white;
+  border-radius: 15px;
+  padding: 18px;
+  box-shadow: 0 5px 30px #0002;
+  z-index: 50;
+}
+
+#chat-box textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 80px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+}
+
+.chat-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-actions button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--main);
+  color: white;
+}
+
+.chat-actions button:last-child {
+  background: #9298a8;
+}
+
+#chat-reply {
+  color: #5f6b91;
+  font-size: 13px;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 750px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav {
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 45px 20px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid, .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 25px 16px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">恋尘的博客</div>
-<nav>
-<a href=" ">首页</a >
-<a href="#blog">博客文章</a >
-<a href="#resources">资源分类</a >
-<a href="#shop">资料商城</a >
-<a href="#contact">联系客服</a >
-</nav>
+  <div class="header-inner">
+    <a class="logo" href=" ">恋尘的博客</a >
+
+    <nav>
+      <a href="#">首页</a >
+      <a href="#blog">博客文章</a >
+      <a href="#resources">资源分类</a >
+      <a href="#shop">资料商城</a >
+      <a href="#about">关于我</a >
+      <a href="#contact">客服</a >
+    </nav>
+  </div>
 </header>
 
+<!-- 首页主视觉 -->
 <div class="hero">
-<h1>欢迎来到恋尘的博客</h1>
-<p>分享视频资料、实用教程、软件资源，发现有价值的数字内容。</p >
+  <div class="hero-inner">
+    <span class="hero-label">个人博客 · 数字资源分享</span>
+    <h1>欢迎来到恋尘的博客</h1>
+    <p>
+      在这里分享实用教程、精选视频、软件工具和数字资料。
+      希望每一次访问，都能找到有价值的内容。
+    </p >
+
+    <div class="hero-buttons">
+      <a class="primary-btn" href="#blog">浏览文章</a >
+      <a class="secondary-btn" href="#shop">探索资源</a >
+    </div>
+  </div>
 </div>
 
-<div class="container">
-<section id="resources">
-<h2>资源分类</h2>
-<div class="categories">
-<div class="card"><h3>🎬 视频资料</h3><p>精选视频与学习素材</p ></div>
-<div class="card"><h3>📚 教程资料</h3><p>实用教程与学习文档</p ></div>
-<div class="card"><h3>💻 软件资源</h3><p>工具软件与资源合集</p ></div>
-</div>
-</section>
+<main class="container">
 
-<section id="blog">
-<h2>博客文章</h2>
-<div class="card">
-<h3>欢迎来到我的个人博客</h3>
-<p>这里将持续更新资源介绍、使用教程和分享文章。</p >
-</div>
-</section>
+  <!-- 搜索 -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <h2>搜索内容</h2>
+        <div class="section-subtitle">搜索博客文章和商城资源</div>
+      </div>
+    </div>
 
-<section id="shop">
-<h2>资料商城</h2>
-<p>单份数字资料，售出后自动下架（当前为演示页面）</p >
-<div class="products">
-<div class="card">
-<span class="tag">教程资料</span>
-<h3>示例教程资料 A</h3>
-<p>资料介绍：详细内容及说明将在正式上架时更新。</p >
-<div class="price">¥9.90</div>
-<button onclick="buy(this)">模拟购买</button>
-</div>
-<div class="card">
-<span class="tag">视频资料</span>
-<h3>示例视频资料 B</h3>
-<p>资料介绍：单份库存，售出后下架。</p >
-<div class="price">¥19.90</div>
-<button onclick="buy(this)">模拟购买</button>
-</div>
-<div class="card">
-<span class="tag">软件资源</span>
-<h3>示例软件资源 C</h3>
-<p>资料介绍：具体资源介绍稍后添加。</p >
-<div class="price">¥5.00</div>
-<button onclick="buy(this)">模拟购买</button>
-</div>
-</div>
-</section>
+    <div class="search-box">
+      <input id="search-input" type="search"
+        placeholder="输入关键词，例如：教程、软件、视频">
+      <button onclick="searchContent()">搜索</button>
+    </div>
+  </section>
 
-<section id="contact">
-<h2>联系客服</h2>
-<div class="card">
-<p>如有问题，可点击右下角客服按钮咨询。</p >
-<p>正式客服联系方式后续设置。</p >
-</div>
-</section>
-</div>
+  <!-- 分类 -->
+  <section class="section" id="resources">
+    <div class="section-header">
+      <div>
+        <h2>资源分类</h2>
+        <div class="section-subtitle">发现你需要的内容</div>
+      </div>
+    </div>
 
-<footer>© 2026 恋尘的博客 · 个人资源分享</footer>
+    <div class="category-grid">
 
-<button id="chat" onclick="toggleChat()">在线客服</button>
-<div id="chatbox">
-<h3>在线客服</h3>
-<p>你好！客服功能目前为演示版本。</p >
-<textarea id="msg" placeholder="请输入咨询内容" style="width:100%;height:70px"></textarea>
-<br><br>
-<button onclick="sendMsg()">发送</button>
-<button onclick="toggleChat()" style="background:#888">关闭</button>
-<div id="reply"></div>
+      <a href="#shop" class="category-card"
+        onclick="setFilter('视频资料')">
+        <div class="category-icon">🎬</div>
+        <h3>视频资料</h3>
+        <p>视频素材、影音资料及相关内容</p >
+      </a >
+
+      <a href="#shop" class="category-card"
+        onclick="setFilter('教程资料')">
+        <div class="category-icon">📚</div>
+        <h3>教程资料</h3>
+        <p>实用教程、学习文档与知识分享</p >
+      </a >
+
+      <a href="#shop" class="category-card"
+        onclick="setFilter('软件资源')">
+        <div class="category-icon">💻</div>
+        <h3>软件资源</h3>
+        <p>软件工具、效率工具与相关介绍</p >
+      </a >
+
+    </div>
+  </section>
+
+  <!-- 博客 -->
+  <section class="section" id="blog">
+    <div class="section-header">
+      <div>
+        <h2>博客文章</h2>
+        <div class="section-subtitle">记录经验，分享知识</div>
+      </div>
+    </div>
+
+    <div class="blog-grid" id="blog-grid">
+
+      <article class="card blog-card" data-search="博客 网站 介绍 欢迎">
+        <div class="blog-icon">✍️</div>
+        <span class="tag">博客介绍</span>
+        <h3>欢迎来到我的个人博客</h3>
+        <p>这里是恋尘的个人空间，未来将持续分享实用内容和资源。</p >
+      </article>
+
+      <article class="card blog-card" data-search="免费 网站 github pages 建站 教程">
+        <div class="blog-icon">🌐</div>
+        <span class="tag">网站教程</span>
+        <h3>如何免费搭建个人网站</h3>
+        <p>使用免费平台搭建个人网站，记录你的内容和作品。</p >
+      </article>
+
+      <article class="card blog-card" data-search="资源 软件 工具 推荐">
+        <div class="blog-icon">🧰</div>
+        <span class="tag">资源分享</span>
+        <h3>实用工具与资源分享</h3>
+        <p>收集整理有价值的工具，让学习和工作更加方便。</p >
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 商城 -->
+  <section class="section" id="shop">
+    <div class="section-header">
+      <div>
+        <h2>资料商城</h2>
+        <div class="section-subtitle">
+          数字资源展示 · 单份库存演示
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" onclick="setFilter('全部')">全部</button>
+      <button class="filter-btn" onclick="setFilter('教程资料')">教程</button>
+      <button class="filter-btn" onclick="setFilter('视频资料')">视频</button>
+      <button class="filter-btn" onclick="setFilter('软件资源')">软件</button>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+      <div class="card product-card"
+        data-category="教程资料"
+        data-search="教程资料 示例教程资料A 学习 文档">
+
+        <span class="tag">教程资料</span>
+        <h3>示例教程资料 A</h3>
+        <p>详细内容及说明将在正式上架时更新。</p >
+        <div class="price">¥9.90</div>
+        <button class="buy-btn" onclick="buy(this,'product-a')">
+          模拟购买
+        </button>
+      </div>
+
+      <div class="card product-card"
+        data-category="视频资料"
+        data-search="视频资料 示例视频资料B 视频">
+
+        <span class="tag">视频资料</span>
+        <h3>示例视频资料 B</h3>
+        <p>单份库存，售出后下架。</p >
+        <div class="price">¥19.90</div>
+        <button class="buy-btn" onclick="buy(this,'product-b')">
+          模拟购买
+        </button>
+      </div>
+
+      <div class="card product-card"
+        data-category="软件资源"
+        data-search="软件资源 示例软件资源C 软件工具">
+
+        <span class="tag">软件资源</span>
+        <h3>示例软件资源 C</h3>
+        <p>具体资源介绍稍后添加。</p >
+        <div class="price">¥5.00</div>
+        <button class="buy-btn" onclick="buy(this,'product-c')">
+          模拟购买
+        </button>
+      </div>
+
+    </div>
+
+    <div class="empty" id="product-empty">
+      没有找到相关资源。
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <h2>关于本站</h2>
+    </div>
+
+    <div class="about-box">
+      <h3>你好，我是恋尘 👋</h3>
+      <p>
+        这是我的个人博客，主要用于分享教程、软件资源、
+        视频资料及其他有价值的数字内容。
+      </p >
+      <p>
+        网站正在持续建设中，欢迎访问、浏览和交流。
+      </p >
+    </div>
+  </section>
+
+  <!-- 客服 -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <h2>联系客服</h2>
+    </div>
+
+    <div class="card">
+      <p>如果你对本站内容或资源有任何疑问，可以使用右下角的客服窗口留言。</p >
+      <p>当前留言功能为演示版本，尚未连接真实客服系统。</p >
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 恋尘的博客 · 个人资源分享
+  <br><br>
+  由 GitHub Pages 提供免费托管
+</footer>
+
+<!-- 客服按钮 -->
+<button id="chat-button" onclick="toggleChat()">
+  💬 在线客服
+</button>
+
+<div id="chat-box">
+  <h3>在线客服</h3>
+  <p style="font-size:14px;color:#777">
+    你好！欢迎咨询恋尘的博客。
+  </p >
+
+  <textarea id="chat-message" placeholder="请输入咨询内容"></textarea>
+
+  <div class="chat-actions">
+    <button onclick="sendMessage()">发送</button>
+    <button onclick="toggleChat()">关闭</button>
+  </div>
+
+  <div id="chat-reply"></div>
 </div>
 
 <script>
-function buy(btn){
-if(btn.disabled)return;
-if(confirm("这是演示购买，尚未接入真实支付。确定模拟购买吗？")){
-btn.innerText="已售出";
-btn.disabled=true;
+/* 搜索功能 */
+function searchContent() {
+  const keyword = document.getElementById("search-input")
+    .value.trim().toLowerCase();
+
+  const blogs = document.querySelectorAll(".blog-card");
+  const products = document.querySelectorAll(".product-card");
+
+  let blogCount = 0;
+  let productCount = 0;
+
+  blogs.forEach(item => {
+    const text = (item.innerText + " " +
+      (item.dataset.search || "")).toLowerCase();
+
+    const matched = !keyword || text.includes(keyword);
+    item.style.display = matched ? "" : "none";
+
+    if (matched) blogCount++;
+  });
+
+  products.forEach(item => {
+    const text = (item.innerText + " " +
+      (item.dataset.search || "")).toLowerCase();
+
+    const matched = !keyword || text.includes(keyword);
+    item.style.display = matched ? "" : "none";
+
+    if (matched) productCount++;
+  });
+
+  document.getElementById("product-empty").style.display =
+    productCount === 0 ? "block" : "none";
+
+  if (keyword && blogCount === 0 && productCount === 0) {
+    alert("没有找到相关内容，请尝试其他关键词。");
+  }
 }
+
+document.getElementById("search-input")
+  .addEventListener("keydown", function(e) {
+    if (e.key === "Enter") searchContent();
+  });
+
+/* 分类筛选 */
+function setFilter(category) {
+  const buttons = document.querySelectorAll(".filter-btn");
+
+  buttons.forEach(button => {
+    button.classList.remove("active");
+
+    if (button.innerText === category ||
+        (category === "全部" && button.innerText === "全部")) {
+      button.classList.add("active");
+    }
+  });
+
+  const products = document.querySelectorAll(".product-card");
+  let count = 0;
+
+  products.forEach(product => {
+    const matched =
+      category === "全部" ||
+      product.dataset.category === category;
+
+    product.style.display = matched ? "" : "none";
+
+    if (matched) count++;
+  });
+
+  document.getElementById("product-empty").style.display =
+    count === 0 ? "block" : "none";
 }
-function toggleChat(){
-let box=document.getElementById("chatbox");
-box.style.display=box.style.display==="block"?"none":"block";
+
+/* 模拟购买 */
+function buy(button, id) {
+  if (button.disabled) return;
+
+  const confirmed = confirm(
+    "这是模拟购买功能，并未真实付款。\n确定模拟购买吗？"
+  );
+
+  if (!confirmed) return;
+
+  button.innerText = "已售出";
+  button.disabled = true;
+
+  const card = button.closest(".product-card");
+
+  const sold = document.createElement("div");
+  sold.className = "sold-label";
+  sold.innerText = "已售出";
+
+  card.appendChild(sold);
+
+  /* 保存本浏览器模拟状态 */
+  try {
+    localStorage.setItem("sold-" + id, "true");
+  } catch(e) {}
 }
-function sendMsg(){
-let m=document.getElementById("msg").value.trim();
-if(!m)return;
-document.getElementById("reply").innerText="留言已记录在本页面演示中，正式客服功能尚未接入。";
-document.getElementById("msg").value="";
+
+/* 恢复模拟购买状态 */
+window.addEventListener("load", function() {
+  ["product-a", "product-b", "product-c"].forEach(id => {
+    try {
+      if (localStorage.getItem("sold-" + id) === "true") {
+        const button = document.querySelector(
+          '[onclick*="' + id + '"]'
+        );
+
+        if (button) {
+          button.innerText = "已售出";
+          button.disabled = true;
+
+          const card = button.closest(".product-card");
+
+          if (card && !card.querySelector(".sold-label")) {
+            const sold = document.createElement("div");
+            sold.className = "sold-label";
+            sold.innerText = "已售出";
+            card.appendChild(sold);
+          }
+        }
+      }
+    } catch(e) {}
+  });
+});
+
+/* 客服 */
+function toggleChat() {
+  const box = document.getElementById("chat-box");
+
+  box.style.display =
+    box.style.display === "block" ? "none" : "block";
+}
+
+function sendMessage() {
+  const message = document.getElementById("chat-message")
+    .value.trim();
+
+  if (!message) {
+    alert("请先输入留言内容。");
+    return;
+  }
+
+  document.getElementById("chat-reply").innerText =
+    "留言已提交演示！目前尚未连接真实客服后台，" +
+    "你的留言不会被服务器保存。";
+
+  document.getElementById("chat-message").value = "";
 }
 </script>
+
 </body>
 </html>
