@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>恋尘博客管理后台</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>恋尘博客管理中心</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f5fa;color:#263247;font-family:Arial,"Microsoft YaHei",sans-serif}
+header{background:linear-gradient(135deg,#536dfe,#8c63ed);color:white;padding:28px 20px}
+header h1{margin:0 0 10px;font-size:24px}
+header p{margin:0;font-size:14px;opacity:.9}
+main{max-width:720px;margin:auto;padding:18px}
+.card{background:white;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 3px 14px #00000008}
+.card h2{font-size:18px;margin:0 0 8px}
+.card p{font-size:14px;color:#667085;line-height:1.6}
+.btn{display:block;text-align:center;text-decoration:none;color:white;background:#536dfe;padding:13px;border-radius:10px;margin-top:12px;font-size:15px}
+.btn2{background:#eef1ff;color:#4055ce}
+.note{background:#fff8e7;padding:14px;border-radius:12px;font-size:13px;line-height:1.7;color:#765719}
+footer{text-align:center;color:#98a2b3;padding:20px;font-size:12px}
+</style>
 </head>
 <body>
-  <div id="nc-root"></div>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+<header>
+<h1>恋尘的博客 · 管理中心</h1>
+<p>欢迎回来，选择你要管理的内容</p >
+</header>
+<main>
+
+<div class="card">
+<h2>📝 博客文章</h2>
+<p>发布新文章，记录想法、教程和经验。</p >
+<a class="btn" href=" ">发布新文章</a >
+<a class="btn btn2" href="https://github.com/xpwen2015/xpwen2015.github.io/tree/main/posts">查看文章文件</a >
+</div>
+
+<div class="card">
+<h2>📚 教程与资源</h2>
+<p>添加软件、视频教程、资料及下载资源。</p >
+<a class="btn" href="https://github.com/xpwen2015/xpwen2015.github.io/new/main/resources">添加新资源</a >
+<a class="btn btn2" href="https://github.com/xpwen2015/xpwen2015.github.io/tree/main/resources">查看资源文件</a >
+</div>
+
+<div class="card">
+<h2>🛒 商城商品</h2>
+<p>添加商品，编辑价格、介绍、库存及下载链接。</p >
+<a class="btn" href="https://github.com/xpwen2015/xpwen2015.github.io/new/main/products">添加新商品</a >
+<a class="btn btn2" href="https://github.com/xpwen2015/xpwen2015.github.io/tree/main/products">查看商品文件</a >
+</div>
+
+<div class="card">
+<h2>🎨 编辑博客首页</h2>
+<p>修改首页布局、文字、栏目和页面设计。</p >
+<a class="btn" href="https://github.com/xpwen2015/xpwen2015.github.io/edit/main/index.html">编辑首页</a >
+</div>
+
+<div class="card">
+<h2>🌐 查看网站</h2>
+<a class="btn btn2" href="https://xpwen2015.github.io/">打开博客网站</a >
+</div>
+
+<div class="note">
+<strong>使用说明：</strong><br>
+点击管理按钮后会打开 GitHub 文件编辑页面。新建内容需要填写文件名、内容并提交。提交后网站通常需要等待一会儿更新。这个管理中心目前是快捷入口，后续我们会继续升级成更方便的内容编辑界面。
+</div>
+
+</main>
+<footer>恋尘的博客 · 免费管理中心</footer>
 </body>
 </html>
