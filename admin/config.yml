@@ -1,0 +1,93 @@
+backend:
+  name: github
+  repo: xpwen2015/xpwen2015.github.io
+  branch: main
+
+site_url: https://xpwen2015.github.io
+display_url: https://xpwen2015.github.io
+
+media_folder: images
+public_folder: /images
+
+collections:
+
+  - name: posts
+    label: 博客文章
+    folder: posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: 标题
+        name: title
+        widget: string
+      - label: 日期
+        name: date
+        widget: datetime
+      - label: 分类
+        name: category
+        widget: string
+      - label: 封面
+        name: cover
+        widget: image
+        required: false
+      - label: 正文
+        name: body
+        widget: markdown
+
+  - name: resources
+    label: 教程与资源
+    folder: resources
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: 名称
+        name: title
+        widget: string
+      - label: 分类
+        name: category
+        widget: string
+      - label: 简介
+        name: description
+        widget: text
+      - label: 下载链接
+        name: download_url
+        widget: string
+        required: false
+      - label: 正文
+        name: body
+        widget: markdown
+
+  - name: products
+    label: 商城商品
+    folder: products
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: 商品名称
+        name: title
+        widget: string
+      - label: 商品价格
+        name: price
+        widget: number
+      - label: 商品介绍
+        name: description
+        widget: text
+      - label: 商品图片
+        name: image
+        widget: image
+        required: false
+      - label: 库存
+        name: stock
+        widget: number
+        default: 1
+      - label: 是否上架
+        name: available
+        widget: boolean
+        default: true
+      - label: 下载地址
+        name: download_url
+        widget: string
+        required: false
+      - label: 商品详情
+        name: body
+        widget: markdown
